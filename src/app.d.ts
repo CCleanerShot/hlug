@@ -2,6 +2,7 @@
 // for information about these interfaces
 declare global {
 	namespace App {
+		type google = any;
 		// interface Error {}
 		// interface Locals {}
 		// interface PageData {}
