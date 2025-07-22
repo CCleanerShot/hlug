@@ -2,16 +2,6 @@ import type { Meetup } from './types';
 
 export const meetups: Meetup[] = [
 	{
-		address: '11630 Chimney Rock Rd, Houston, TX 77035',
-		coords: { lat: 29.652634, long: -95.481378 },
-		name: 'Dr.Shannon Walker Neighborhood Library',
-		overview: {
-			cons: ['Closes at 8pm'],
-			pros: []
-		},
-		pictures: []
-	},
-	{
 		address: '4201 Main St, Houston, TX 77002',
 		coords: { lat: 29.73444, long: -95.38208 },
 		name: 'The Ion (Downstairs)',
@@ -28,6 +18,16 @@ export const meetups: Meetup[] = [
 		overview: {
 			cons: ['Thursday', "Guest List"],
 			pros: ['Tacos']
+		},
+		pictures: []
+	},
+	{
+		address: '11630 Chimney Rock Rd, Houston, TX 77035',
+		coords: { lat: 29.652634, long: -95.481378 },
+		name: 'Dr.Shannon Walker Neighborhood Library',
+		overview: {
+			cons: ['Closes at 8pm'],
+			pros: []
 		},
 		pictures: []
 	},
