@@ -32,6 +32,16 @@ export const meetups: Meetup[] = [
 		pictures: []
 	},
 	{
+		address: '4201 Main St, Houston, TX 77002',
+		coords: { lat: 29.73444, long: -95.38208 },
+		name: 'The Ion (Microsoft Sponsorship)',
+		overview: {
+			cons: ['Thursday', "Guest List"],
+			pros: ['Tacos']
+		},
+		pictures: []
+	},
+	{
 		address: '100 N Jackson St, Houston, TX 77002',
 		coords: { lat: 29.760920, long: -95.352501 },
 		name: 'Frost Town Brewing',
@@ -56,7 +66,27 @@ export const meetups: Meetup[] = [
 		coords: { lat: 29.795050, long: -95.569832 },
 		name: 'The Cannon West Houston',
 		overview: {
-			cons: ["In Katy"],
+			cons: [],
+			pros: []
+		},
+		pictures: []
+	},
+	{
+		address: '6501 Navigation Blvd, Houston, TX 77011',
+		coords: { lat: 29.749510, long: -95.307068 },
+		name: 'TXRX Labs',
+		overview: {
+			cons: ["Warehouse"],
+			pros: []
+		},
+		pictures: []
+	},
+	{
+		address: '13940 Bammel North Houston Rd, Houston, TX 77066',
+		coords: { lat: 29.976203, long: -95.491838 },
+		name: 'Random Warehouse',
+		overview: {
+			cons: ["Random Warehouse"],
 			pros: []
 		},
 		pictures: []
