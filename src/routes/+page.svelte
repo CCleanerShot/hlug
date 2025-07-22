@@ -57,19 +57,25 @@
 		const elements = document.getElementsByClassName('meetup');
 
 		for (const _element of elements) {
-			const element = _element as HTMLDivElement
+			const element = _element as HTMLDivElement;
 			const name = element.attributes.getNamedItem('data-restaurant-name');
 			if (currentLocation?.name === name?.value) {
-				console.log(currentLocation?.name)
-				element.style.filter = "drop-shadow(2px 4px 4px black)"
+				console.log(currentLocation?.name);
+				element.style.filter = 'drop-shadow(2px 4px 4px black)';
 			} else {
-				element.style.filter = ""
+				element.style.filter = '';
 			}
 		}
 	});
 
 	const onclick = (meetup: Meetup) => {
 		currentLocation = meetup;
+	};
+
+	const searchGoogleMaps = (location: string): string => {
+		const baseUrl = 'https://www.google.com/maps/place/';
+		const path = location.replace(/\s/g, '+');
+		return baseUrl + path;
 	};
 </script>
 
@@ -119,6 +125,12 @@
 						class="p-1 flex flex-col *:justify-between *:w-full *:not-last:border-b *:not-last:border-dashed *:not-last:border-black *:items-center *:flex *:*:first:font-bold *:*:last:text-sm"
 						id="sidebar-info"
 					>
+						<a
+							class="w-full underline text-center not-visited:text-blue-500 visited:text-purple-500"
+							href={searchGoogleMaps(currentLocation.address)}
+							target="_blank">
+							Open In Google Maps
+						</a>
 						<div>
 							<span>Name:</span>
 							<span>{currentLocation.name}</span>
