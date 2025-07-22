@@ -60,15 +60,5 @@ export const meetups: Meetup[] = [
 			pros: []
 		},
 		pictures: []
-	},
-	{
-		address: '13940 Bammel North Houston Rd, Houston, TX 77066',
-		coords: { lat: 29.976203, long: -95.491838 },
-		name: "Member's Warehouse",
-		overview: {
-			cons: ["Warehouse"],
-			pros: []
-		},
-		pictures: []
 	}
 ];
