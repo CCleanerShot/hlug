@@ -4,16 +4,6 @@ export const meetups: Meetup[] = [
 	{
 		address: '4201 Main St, Houston, TX 77002',
 		coords: { lat: 29.73444, long: -95.38208 },
-		name: 'The Ion (Downstairs)',
-		overview: {
-			cons: ['Already kicked out once'],
-			pros: ['Tacos']
-		},
-		pictures: []
-	},
-	{
-		address: '4201 Main St, Houston, TX 77002',
-		coords: { lat: 29.73444, long: -95.38208 },
 		name: 'The Ion (Microsoft Sponsorship)',
 		overview: {
 			cons: ['Thursday', "Guest List"],
