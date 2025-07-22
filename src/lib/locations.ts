@@ -12,16 +12,6 @@ export const meetups: Meetup[] = [
 		pictures: []
 	},
 	{
-		address: '3402 Fondren Rd, Houston, TX 77063',
-		coords: { lat: 29.727327, long: -95.520929 },
-		name: 'Ranosh Cafe',
-		overview: {
-			cons: ['Contains a hookah (smoking) building nearby', 'Limited parking'],
-			pros: []
-		},
-		pictures: []
-	},
-	{
 		address: '4201 Main St, Houston, TX 77002',
 		coords: { lat: 29.73444, long: -95.38208 },
 		name: 'The Ion (Downstairs)',
