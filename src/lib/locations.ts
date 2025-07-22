@@ -67,7 +67,7 @@ export const meetups: Meetup[] = [
 		name: 'The Cannon West Houston',
 		overview: {
 			cons: [],
-			pros: []
+			pros: ["Co-working space"]
 		},
 		pictures: []
 	},
