@@ -36,8 +36,28 @@ export const meetups: Meetup[] = [
 		coords: { lat: 29.760920, long: -95.352501 },
 		name: 'Frost Town Brewing',
 		overview: {
+			cons: ['Loud/Busy on Wednesdays'],
+			pros: []
+		},
+		pictures: []
+	},
+	{
+		address: '1519 Fulton St, Houston, TX 77009',
+		coords: { lat: 29.774036, long: -95.356543 },
+		name: 'Bad Astronaut Brewing Co.',
+		overview: {
 			cons: ['No A/C'],
 			pros: ['Huge area']
+		},
+		pictures: []
+	},
+	{
+		address: '1334 Brittmoore Rd, Houston, TX 77043',
+		coords: { lat: 29.795050, long: -95.569832 },
+		name: 'The Cannon West Houston',
+		overview: {
+			cons: ["In Katy"],
+			pros: []
 		},
 		pictures: []
 	}

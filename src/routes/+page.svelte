@@ -6,18 +6,23 @@
 
 	let currentLocation: Meetup | undefined = $state(undefined);
 	let sidebarOpened: boolean = $state(true);
+	let google: any = $state();
+	let map: any = $state();
+	let Map: any = $state();
+	let LatLngBounds: any = $state();
+	let AdvancedMarkerElement: any = $state();
 
 	onMount(async () => {
 		await initGoogle();
-		const google = (globalThis as any).google as any;
-		const { Map } = await google.maps.importLibrary('maps');
-		const { LatLngBounds } = await google.maps.importLibrary('core');
-		const { AdvancedMarkerElement } = await google.maps.importLibrary('marker');
+		google = (globalThis as any).google as any;
+		Map = (await google.maps.importLibrary('maps')).Map;
+		LatLngBounds = (await google.maps.importLibrary('core')).LatLngBounds;
+		AdvancedMarkerElement = (await google.maps.importLibrary('marker')).AdvancedMarkerElement;
 
 		const bounds = new LatLngBounds();
 		// Center of Houston, TX
 		const position = new google.maps.LatLng(29.7601, -95.3701);
-		const map = new Map(document.getElementById('map'), {
+		map = new Map(document.getElementById('map'), {
 			center: position,
 			mapId: 'map-iframe',
 			zoom: 12
@@ -30,8 +35,9 @@
 				position: location,
 				title: meetup.name
 			});
+
 			markerView.element.setAttribute('data-restaurant-name', meetup.name);
-			console.log(markerView.element);
+			markerView.element.classList.add('meetup');
 			markerView.addEventListener('click', (e: any) => {
 				const data = e.target.getAttribute('data-restaurant-name');
 				currentLocation = meetups.find((e) => e.name === data);
@@ -44,8 +50,21 @@
 	});
 
 	$effect(() => {
-		if (currentLocation !== undefined) {
+		if (currentLocation) {
 			sidebarOpened = true;
+		}
+
+		const elements = document.getElementsByClassName('meetup');
+
+		for (const _element of elements) {
+			const element = _element as HTMLDivElement
+			const name = element.attributes.getNamedItem('data-restaurant-name');
+			if (currentLocation?.name === name?.value) {
+				console.log(currentLocation?.name)
+				element.style.filter = "drop-shadow(2px 4px 4px black)"
+			} else {
+				element.style.filter = ""
+			}
 		}
 	});
 
@@ -96,7 +115,10 @@
 				</div>
 				<div class="m-1 border border-black"></div>
 				{#if currentLocation}
-					<div class="p-1 flex flex-col *:justify-between *:w-full *:not-last:border-b *:not-last:border-dashed *:not-last:border-black *:items-center *:flex *:*:first:font-bold *:*:last:text-sm" id="sidebar-info">
+					<div
+						class="p-1 flex flex-col *:justify-between *:w-full *:not-last:border-b *:not-last:border-dashed *:not-last:border-black *:items-center *:flex *:*:first:font-bold *:*:last:text-sm"
+						id="sidebar-info"
+					>
 						<div>
 							<span>Name:</span>
 							<span>{currentLocation.name}</span>
