@@ -27,6 +27,7 @@
 		"vite": "7.0.5"
 	},
 	"dependencies": {
+		"googleapis": "^153.0.0",
 		"mongodb": "6.17"
 	}
 }

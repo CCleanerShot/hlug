@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { meetups } from '$lib/locations';
 	import type { Meetup } from '$lib/types';
-	import { initGoogle } from '$lib/google-maps';
+	import { initGoogle } from '$lib/google/googleMaps';
 
 	let currentLocation: Meetup | undefined = $state(undefined);
 	let sidebarOpened: boolean = $state(true);
