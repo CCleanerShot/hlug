@@ -1,3 +1,5 @@
+import type { GoogleUser } from "./mongodb/collections/GoogleUser";
+
 export type Meetup = {
 	address: string;
 	coords: { lat: number; long: number };
@@ -15,3 +17,5 @@ export type OAuthGoogleUserResponse = {
   family_name: string,
   picture: string;
 }
+
+export type GoogleUserNoIdOrEmail = Omit<GoogleUser, "id" | "email">

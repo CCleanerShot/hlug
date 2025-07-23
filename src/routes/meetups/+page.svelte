@@ -58,7 +58,6 @@
 			const name = element.attributes.getNamedItem('data-restaurant-name');
 
 			if (currentLocation?.name === name?.value) {
-				console.log(currentLocation?.name);
 				element.style.filter = 'drop-shadow(2px 4px 4px black)';
 			} else {
 				element.style.filter = '';

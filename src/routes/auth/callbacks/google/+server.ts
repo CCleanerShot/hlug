@@ -1,7 +1,10 @@
-import type { RequestHandler } from '@sveltejs/kit';
+import { mongoBot } from '$lib/mongodb/MongoBot';
 import { oauthClient } from '$lib/oauth/oauthClient';
-import { oauthBaseURL } from '$lib/oauth/oauthScopes';
+import { sessionServer } from '$lib/server/sessionServer';
+import { utilityServer } from '$lib/server/utilityServer';
+import { redirect, type RequestHandler } from '@sveltejs/kit';
 
+const accessTokenExpires = new Response('access token expired or invalid');
 const tokenMissing = new Response('token missing');
 const invalidCode = new Response('invalid code');
 
@@ -25,22 +28,21 @@ export const GET: RequestHandler = async ({ cookies, fetch, url }) => {
 
 	const { access_token, expiry_date, id_token, refresh_token, scope, token_type } = tokens;
 	oauthClient.setCredentials(tokens);
+	const json = await utilityServer.getMeGoogle(access_token!, fetch);
 
-	cookies.set('access_token', access_token!, {
-		expires: new Date(expiry_date!),
-		httpOnly: true,
-		path: '/',
-		sameSite: 'lax'
-	});
+	
+	if (!json) {
+		return accessTokenExpires;
+	}
 
-	cookies.set('refresh_token', refresh_token!, {
-		httpOnly: true,
-		path: '/',
-		sameSite: 'strict'
-	});
+	sessionServer.setAccessToken(cookies, access_token!, new Date(expiry_date!));
+	sessionServer.setRefreshToken(cookies, refresh_token!);
+	sessionServer.setName(cookies, json.name);
+	const existingUser = await mongoBot.MONGODB_C_GOOGLE_USERS.FindOne({ id: json.id });
 
-	const headers: HeadersInit = { Authorization: `Bearer ${access_token}` };
-	const response = await fetch("https://www.googleapis.com/oauth2/v1/userinfo?alt=json", { headers });
-	const json = await response.json();
-	return new Response('asd');
+	if (!existingUser) {
+		await mongoBot.MONGODB_C_GOOGLE_USERS.InsertOne(json);
+	}
+
+	return redirect(303, '/list');
 };
