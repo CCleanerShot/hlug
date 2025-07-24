@@ -6,7 +6,7 @@ export const meetups: Meetup[] = [
 		coords: { lat: 29.73444, long: -95.38208 },
 		name: 'The Ion (Microsoft Sponsorship)',
 		overview: {
-			cons: ['Thursday', "Guest List"],
+			cons: ["Guest List"],
 			pros: ['Tacos']
 		},
 		pictures: []
