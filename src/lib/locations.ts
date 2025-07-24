@@ -60,5 +60,15 @@ export const meetups: Meetup[] = [
 			pros: []
 		},
 		pictures: []
+	},
+		{
+		address: '10111 Richmond Ave., Houston, TX 77042',
+		coords: { lat: 29.727280, long: -95.551869 },
+		name: 'Improving',
+		overview: {
+			cons: ["Only twice a month"],
+			pros: ["Co-working space", "Free Pizza"]
+		},
+		pictures: []
 	}
 ];
