@@ -19,7 +19,7 @@
 
 <div class="flex flex-col items-center p-2">
 	{#if !data.loggedIn}
-		<a class="border-2 rounded-md p-1 flex gap-8 items-center justify-between m-auto" href={oauth_google}>
+		<a class="border-2 rounded-md p-1 flex gap-8 items-center justify-between m-auto hover:bg-black hover:text-white transition-all" href={oauth_google}>
 			<img src={google} alt="google icon" width="20" />
 			<span>Sign Up With Google</span>
 		</a>
